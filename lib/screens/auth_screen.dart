@@ -19,22 +19,26 @@ class _AuthScreenState extends State<AuthScreen> {
   void _login() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      // Simulate login by creating a dummy user
-      // In a real app, you would authenticate against a backend
-      final dummyUser = User(
-        username: _username,
-        email: '$_username@example.com',
-        age: 30,
-        height: 170,
-        weight: 70,
-        fitnessGoal: 'Weight Loss',
-        activityLevel: 'Moderately Active',
-      );
-      
-      // Navigate to MainApp and pass the user data
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => MainApp(user: dummyUser)),
-      );
+      if (_password.isEmpty) { // Will have to update this later
+        const Text('Please enter your password');
+      } else {
+        // Simulate login by creating a dummy user
+        // In a real app, you would authenticate against a backend
+        final dummyUser = User(
+          username: _username,
+          email: '$_username@example.com',
+          age: 27,
+          height: 167.64,
+          weight: 87,
+          fitnessGoal: 'Weight Loss',
+          activityLevel: 'Moderately Active',
+        );
+        
+        // Navigate to MainApp and pass the user data
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => MainApp(user: dummyUser)),
+        );
+      }
     }
   }
 
