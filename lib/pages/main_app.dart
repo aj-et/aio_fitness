@@ -1,10 +1,12 @@
 import 'package:aio_fitness/models/user.dart';
 import 'package:flutter/material.dart';
-import 'food_intake_tracker.dart';
-import 'water_intake_tracker.dart';
+// import 'food_intake_tracker.dart';
+// import 'water_intake_tracker.dart';
+import 'nutrition.dart';
 import 'home_page.dart';
 import 'workout.dart';
 import 'profile.dart';
+import 'social.dart';
 // import '../models/user.dart';
 
 class MainApp extends StatefulWidget {
@@ -25,10 +27,12 @@ class _MainAppState extends State<MainApp> {
   void initState() {
     super.initState();
     _pages = [
-      const FoodIntakeTracker(),
-      const WaterIntakeTracker(),
-      const HomePage(),
+      // const FoodIntakeTracker(),
+      // const WaterIntakeTracker(),
+      const Nutrition(),
       const Workout(),
+      const HomePage(),
+      const Social(),
       Profile(user: widget.user),
     ];
   }
@@ -46,10 +50,10 @@ class _MainAppState extends State<MainApp> {
         },
         type: BottomNavigationBarType.fixed,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.fastfood), label: 'Food'),
-          BottomNavigationBarItem(icon: Icon(Icons.water_drop), label: 'Water'),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.fastfood), label: 'Nutrition'),
           BottomNavigationBarItem(icon: Icon(Icons.fitness_center), label: 'Workout'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.chat_rounded), label: 'Social'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),

@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import '../pages/main_app.dart';
 import 'register_screen.dart';
-// import 'package:logger/logger.dart';
 import '../models/user.dart';
-import './animation_screen.dart';
+import '../screens/animation_screen.dart';
 
-class AuthScreen extends StatefulWidget {
-  const AuthScreen({super.key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  State<AuthScreen> createState() => _AuthScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   String _username = '';
   String _password = '';
@@ -20,11 +19,10 @@ class _AuthScreenState extends State<AuthScreen> {
   void _login() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      if (_password.isEmpty) { // Will have to update this later
-        const Text('Please enter your password');
+      if (_password.isEmpty) {
+        const Text('Please enter your password'); // Placeholder for error handling
       } else {
         // Simulate login by creating a dummy user
-        // In a real app, you would authenticate against a backend
         final dummyUser = User(
           username: _username,
           email: '$_username@example.com',
@@ -34,12 +32,11 @@ class _AuthScreenState extends State<AuthScreen> {
           fitnessGoal: 'Weight Loss',
           activityLevel: 'Moderately Active',
         );
-        
-        // Navigate to MainApp and pass the user data
+
+        // Navigate to MainApp and pass the user data with custom animation
         Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => MainApp(user: dummyUser)),
+          createRoute(MainApp(user: dummyUser)), // Use the createRoute function
         );
-        // Navigator.push(context, createRoute(MainApp(user: dummyUser)));
       }
     }
   }
@@ -96,10 +93,7 @@ class _AuthScreenState extends State<AuthScreen> {
               TextButton(
                 child: const Text('Register'),
                 onPressed: () {
-                  // Navigator.of(context).push(
-                  //   MaterialPageRoute(builder: (context) => const RegisterScreen()),
-                  // );
-                  Navigator.push(context, createRoute(const RegisterScreen()));
+                  Navigator.of(context).push(createRoute(const RegisterScreen())); // Use createRoute for smooth transition
                 },
               ),
             ],

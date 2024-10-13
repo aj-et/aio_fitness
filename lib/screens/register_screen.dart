@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:email_validator/email_validator.dart';
 import '../models/user.dart';
-import 'main_app.dart';
+import '../pages/main_app.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
